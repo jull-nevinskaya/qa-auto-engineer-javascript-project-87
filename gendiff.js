@@ -6,6 +6,7 @@ const program = new Command();
 program
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
-  .helpOption('-h, --help', 'display help for command');
+  .helpOption('-h, --help', 'display help for command')
+  .option('-f, --format', 'enable debugging');
 
 program.parse(process.argv);
