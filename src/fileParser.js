@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
 const parseFile = (filePath) => {
   const absolutePath = path.resolve(process.cwd(), filePath);
@@ -12,8 +13,6 @@ const parseFile = (filePath) => {
     case '.yaml':
     case '.yml':
       return yaml.load(fileContent);
-    case '.ini':
-      return ini.parse(fileContent);
     default:
       throw new Error(`Unsupported file format: ${extension}`);
   }

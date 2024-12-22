@@ -16,12 +16,8 @@ program
       const data1 = parseFile(filepath1);
       const data2 = parseFile(filepath2);
 
-      const diff = JSON.stringify(fileDiff(data1, data2));
+      const diff = fileDiff(data1, data2);
 
-      // console.log('Parsed Data from File 1:', data1);
-      // console.log('Parsed Data from File 2:', data2);
-
-      // Для теста выводим, что файлы успешно считаны
       console.log(diff);
     } catch (error) {
       console.error('Error:', error.message);
