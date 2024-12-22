@@ -1,28 +1,32 @@
 const fileDiff = (obj1, obj2) => {
-  let resObj = {};
+  const allKeys = Array.from(new Set([...Object.keys(obj1), ...Object.keys(obj2)])).sort();
+  const result = {};
 
-  for (const [key, value] of Object.entries(obj1)) {
-    if (key in obj2) {
-      if (obj1[key] === obj2[key]) {
-        resObj[key] = value;
-      } else {
-        resObj['- ' + key] = value;
-        resObj['+ ' + key] = obj2[key];
-      }
-    } else {
-      resObj['- ' + key] = value;
-    }
-  }
+  allKeys.forEach((key) => {
+    const value1 = obj1[key];
+    const value2 = obj2[key];
 
-  for (const [key, value] of Object.entries(obj2)) {
-    if (key in obj1) {
-      continue;
+    if (value1 === value2) {
+      result[key] = value1; // Общее значение
+    } else if (!(key in obj2)) {
+      result[`- ${key}`] = value1; // Удалённый ключ
+    } else if (!(key in obj1)) {
+      result[`+ ${key}`] = value2; // Добавленный ключ
+    } else if (isObject(value1) && isObject(value2)) {
+      // Рекурсивное сравнение вложенных объектов
+      result[key] = fileDiff(value1, value2);
     } else {
-      resObj['- ' + key] = value;
+      result[`- ${key}`] = value1; // Изменённое значение (старое)
+      result[`+ ${key}`] = value2; // Изменённое значение (новое)
     }
-  }
-  return resObj;
+  });
+
+  return result;
 };
+
+// Проверка, является ли значение объектом
+const isObject = (value) => value && typeof value === 'object' && !Array.isArray(value);
+
 module.exports = fileDiff;
 
 // let obj1 =  {

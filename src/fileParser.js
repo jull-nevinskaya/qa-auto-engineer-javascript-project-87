@@ -6,11 +6,17 @@ const parseFile = (filePath) => {
   const fileContent = fs.readFileSync(absolutePath, 'utf-8');
   const extension = path.extname(filePath);
 
-  if (extension === '.json') {
-    return JSON.parse(fileContent);
+  switch (extension) {
+    case '.json':
+      return JSON.parse(fileContent);
+    case '.yaml':
+    case '.yml':
+      return yaml.load(fileContent);
+    case '.ini':
+      return ini.parse(fileContent);
+    default:
+      throw new Error(`Unsupported file format: ${extension}`);
   }
-
-  throw new Error(`Unsupported file format: ${extension}`);
 };
 
 module.exports = parseFile;
