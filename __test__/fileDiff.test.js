@@ -1,3 +1,4 @@
+const { test, expect } = require('@jest/globals');
 const fileDiff = require('../src/fileDiff');
 
 test('Проверка выходного значения сравнения', () => {
