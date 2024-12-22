@@ -4,7 +4,7 @@ const fileDiff = (obj1, obj2) => {
   for (const [key, value] of Object.entries(obj1)) {
     if (key in obj2) {
       if (obj1[key] === obj2[key]) {
-        resObj[' ' + key] = value;
+        resObj[key] = value;
       } else {
         resObj['- ' + key] = value;
         resObj['+ ' + key] = obj2[key];
