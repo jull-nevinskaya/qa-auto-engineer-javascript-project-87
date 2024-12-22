@@ -2,6 +2,7 @@
 
 const { Command } = require('commander');
 const parseFile = require('./fileParser');
+const fileDiff = require('./fileDiff');
 
 const program = new Command();
 
@@ -15,11 +16,13 @@ program
       const data1 = parseFile(filepath1);
       const data2 = parseFile(filepath2);
 
-      console.log('Parsed Data from File 1:', data1);
-      console.log('Parsed Data from File 2:', data2);
+      const diff = JSON.stringify(fileDiff(data1, data2));
+
+      // console.log('Parsed Data from File 1:', data1);
+      // console.log('Parsed Data from File 2:', data2);
 
       // Для теста выводим, что файлы успешно считаны
-      console.log('Comparison not implemented yet');
+      console.log(diff);
     } catch (error) {
       console.error('Error:', error.message);
       process.exit(1);
