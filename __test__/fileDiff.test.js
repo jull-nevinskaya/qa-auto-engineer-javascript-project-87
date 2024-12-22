@@ -14,10 +14,10 @@ test('Проверка выходного значения сравнения', 
   const dataRes = {
     "str": "hexlet.io",
     "- str1": 50,
-  }
+  };
 
   expect(fileDiff(data1, data2)).toEqual(dataRes);
-})
+});
 
 test('Проверка с пустым файлом', () => {
   const data1 = {
@@ -31,4 +31,4 @@ test('Проверка с пустым файлом', () => {
   };
 
   expect(fileDiff(data1, data2)).toEqual(dataRes);
-})
+});
