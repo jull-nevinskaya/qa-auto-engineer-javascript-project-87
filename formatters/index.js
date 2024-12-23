@@ -1,7 +1,9 @@
 const formatPlain = require('./plain');
+const formatJson = require('./json');
 
 const formatters = {
   plain: formatPlain,
+  json: formatJson,
 };
 
 const formatOutput = (diff, formatName) => {

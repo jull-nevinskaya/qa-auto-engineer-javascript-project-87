@@ -1,6 +1,6 @@
 const formatPlain = (diff, parent = '') => {
   const lines = Object.entries(diff).flatMap(([key, value]) => {
-    const cleanKey = key.replace(/^(\+ |\- )/, ''); // Убираем префиксы + или -
+    const cleanKey = key.replace(/^(\+ |\- )/, '');// Убираем префиксы + или -
     const property = parent ? `${parent}.${cleanKey}` : cleanKey;
 
     if (typeof value === 'object' && !Array.isArray(value) && value !== null && !(key.startsWith('+') || key.startsWith('-'))) {
