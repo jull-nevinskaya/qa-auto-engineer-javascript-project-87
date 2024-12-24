@@ -4,6 +4,11 @@ import yaml from 'js-yaml';
 
 const parseFile = (filePath) => {
   const absolutePath = path.resolve(process.cwd(), filePath);
+
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error(`File not found: ${absolutePath}`);
+  }
+
   const fileContent = fs.readFileSync(absolutePath, 'utf-8');
   const extension = path.extname(filePath);
 
