@@ -14,16 +14,16 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format', 'plain') // Добавляем параметр для формата
   .action((filepath1, filepath2, options) => {
-    try {
+   // try {
       const data1 = parseFile(filepath1);
       const data2 = parseFile(filepath2);
       const diff = fileDiff(data1, data2);
       const formattedDiff = formatOutput(diff, options.format);
       console.log(formattedDiff);
-    } catch (error) {
-      console.error(`Error: ${error.message}`);
-      process.exit(1);
-    }
+    // } catch (error) {
+    //   console.error(`Error: ${error.message}`);
+    //   process.exit(1);
+    // }
   });
 
 // Позволяем игнорировать неизвестные опции
