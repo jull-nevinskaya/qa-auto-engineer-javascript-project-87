@@ -31,7 +31,6 @@ program
       throw new Error(error.message);
     }
   });
-  });
 
 // Позволяем игнорировать неизвестные опции
 program.allowUnknownOption(true);
