@@ -16,19 +16,21 @@ program
   .action((filepath1, filepath2, options) => {
     try {
       if (!filepath1 || !filepath2) {
-        throw new Error('Error: Both file paths must be provided.');
+        throw new Error('Both file paths must be provided.');
       }
 
-      // Логика обработки файлов
       const data1 = parseFile(filepath1);
       const data2 = parseFile(filepath2);
       const diff = fileDiff(data1, data2);
       const formattedDiff = formatOutput(diff, options.format);
+
       console.log(formattedDiff);
     } catch (error) {
       console.error(`Error: ${error.message}`);
-      process.exit(1);
+      // Вместо process.exit выбрасываем исключение
+      throw new Error(error.message);
     }
+  });
   });
 
 // Позволяем игнорировать неизвестные опции
