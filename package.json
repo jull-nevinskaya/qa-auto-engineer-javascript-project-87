@@ -5,7 +5,7 @@
   "main": "src/gendiff.js",
   "type": "module",
   "scripts": {
-    "test": "npx jest --color --passWithNoTests --coverage",
+    "test": "npx jest --passWithNoTests --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

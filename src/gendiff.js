@@ -3,7 +3,7 @@
 import { Command } from 'commander';
 import parseFile from './fileParser.js';
 import fileDiff from './fileDiff.js';
-import formatOutput from '../formatters/index.js'; // Импортируем модуль для форматирования
+import formatOutput from '../formatters/index.js';
 
 const program = new Command();
 
@@ -17,14 +17,16 @@ program
     try {
       const data1 = parseFile(filepath1);
       const data2 = parseFile(filepath2);
-
-      const diff = fileDiff(data1, data2); // Сравниваем два файла
-      const formattedDiff = formatOutput(diff, options.format); // Форматируем результат
-
+      const diff = fileDiff(data1, data2);
+      const formattedDiff = formatOutput(diff, options.format);
       console.log(formattedDiff);
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error(`Error: ${error.message}`);
       process.exit(1);
     }
-  })
+  });
+
+// Позволяем игнорировать неизвестные опции
+program.allowUnknownOption(true);
+
 program.parse();
