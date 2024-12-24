@@ -1,5 +1,5 @@
-const { test, expect } = require('@jest/globals');
-const formatPlain = require('../formatters/plain');
+import { test, expect } from '@jest/globals';
+import formatPlain from '../formatters/plain.js';
 
 test('Форматер plain: базовый случай', () => {
   const diff = {

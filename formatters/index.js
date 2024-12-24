@@ -1,5 +1,5 @@
-const formatPlain = require('./plain');
-const formatJson = require('./json');
+import formatPlain from './plain.js';
+import formatJson from './json.js';
 
 const formatters = {
   plain: formatPlain,
@@ -14,4 +14,4 @@ const formatOutput = (diff, formatName) => {
   return formatter(diff);
 };
 
-module.exports = formatOutput;
+export default formatOutput;

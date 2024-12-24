@@ -27,15 +27,4 @@ const fileDiff = (obj1, obj2) => {
 // Проверка, является ли значение объектом
 const isObject = (value) => value && typeof value === 'object' && !Array.isArray(value);
 
-module.exports = fileDiff;
-
-// let obj1 =  {
-//   host: 'hexlet.io',
-//   timeout: 50,
-//   proxy: '123.234.53.22',
-//   follow: false
-// };
-//
-// let obj2 = { timeout: 20, verbose: true, host: 'hexlet.io' };
-//
-// console.log(fileDiff(obj1, obj2));
+export default fileDiff;

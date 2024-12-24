@@ -1,5 +1,5 @@
-const { test, expect } = require('@jest/globals');
-const fileDiff = require('../src/fileDiff');
+import { test, expect } from '@jest/globals';
+import fileDiff from '../src/fileDiff.js';
 
 test('Сравнение плоских JSON файлов с одинаковыми ключами и значениями', () => {
   const data1 = { key1: 'value1', key2: 'value2', key3: 'value3' };

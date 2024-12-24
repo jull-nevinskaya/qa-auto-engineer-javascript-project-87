@@ -30,4 +30,4 @@ const formatPlain = (diff, parent = '') => {
   return lines.join('\n');
 };
 
-module.exports = formatPlain;
+export default formatPlain;

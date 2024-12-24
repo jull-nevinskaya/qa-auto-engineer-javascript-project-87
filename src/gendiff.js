@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander');
-const parseFile = require('./fileParser');
-const fileDiff = require('./fileDiff');
-const formatOutput = require('../formatters/index'); // Импортируем модуль для форматирования
+import { Command } from 'commander';
+import parseFile from './fileParser.js';
+import fileDiff from './fileDiff.js';
+import formatOutput from '../formatters/index.js'; // Импортируем модуль для форматирования
 
 const program = new Command();
 

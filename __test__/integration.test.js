@@ -1,7 +1,7 @@
-const { test, expect } = require('@jest/globals');
-const parseFile = require('../src/fileParser');
-const fileDiff = require('../src/fileDiff');
-const path = require('path');
+import { test, expect } from '@jest/globals';
+import parseFile from '../src/fileParser.js';
+import fileDiff from '../src/fileDiff.js';
+import * as path from 'path';
 
 test('Сравнение двух реальных JSON файлов', () => {
   const file1Path = path.join(__dirname, '../__fixtures__/file1.json');
