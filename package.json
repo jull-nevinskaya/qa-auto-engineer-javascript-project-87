@@ -1,15 +1,16 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/jull-nevinskaya/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/jull-nevinskaya/qa-auto-engineer-javascript-project-87/actions)",
-  "main": "src/gendiff.js",
+  "description": "Compares two configuration files and shows a difference.",
+  "main": "src/index.js",
   "type": "module",
-  "scripts": {
-    "test": "npx jest --passWithNoTests --coverage",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+  "bin": {
+    "gendiff": "bin/gendiff.js"
   },
-  "author": "Nevinskaya Julia",
+  "scripts": {
+    "test": "npx jest --passWithNoTests --coverage"
+  },
+  "author": "Julia",
   "license": "ISC",
   "dependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -20,6 +21,9 @@
     "globals": "^15.8.0",
     "lodash": "^4.17.21",
     "yaml": "^2.6.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

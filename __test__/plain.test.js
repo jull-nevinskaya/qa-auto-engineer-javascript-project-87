@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import formatPlain from '../formatters/plain.js';
+import formatPlain from '../src/formatters/plain.js';
 
 test('Форматер plain: базовый случай', () => {
   const diff = {
