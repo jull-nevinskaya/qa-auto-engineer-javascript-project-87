@@ -1,10 +1,18 @@
-# Установить стандартную переменную для ESLint
-ESLINT = npx eslint
+# Makefile
 
-# Цель lint для проверки всех файлов в директории src
-lint:
-	$(ESLINT) src
+.PHONY: install publish gendiff lint test
 
-# Цель lint-fix для исправления ошибок
-lint-fix:
-	$(ESLINT) src --fix
+install: # Установка зависимостей
+	npm ci
+
+publish:
+	npm publish --dry-run
+
+gendiff: # Запуск приложения
+	node bin/gendiff.js
+
+lint: # Запуск линтера
+	npx eslint .
+
+test:
+	npm test
