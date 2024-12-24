@@ -27,4 +27,4 @@ program
       process.exit(1);
     }
   })
-  .parse(process.argv);
+program.parse();
