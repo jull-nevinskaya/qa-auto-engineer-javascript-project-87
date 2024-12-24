@@ -1,46 +1,21 @@
-import _ from 'lodash';
-import parseFile from '../src/utils/fileParser.js';
-import getFormatter from '../src/formatters/index.js';
+#!/usr/bin/env node
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
-  const data1 = parseFile(filepath1);
-  const data2 = parseFile(filepath2);
+import { Command } from 'commander';
+import genDiff from '../src/index.js';
 
-  const formatFunction = getFormatter(format);
+const program = new Command();
 
-  const keys = _.sortBy([...new Set([...Object.keys(data1), ...Object.keys(data2)])]);
+program
+  .name('gendiff')
+  .description('Compares two configuration files and shows a difference.')
+  .version('1.0.0');
 
-  const diff = keys.map((key) => {
-    if (!(key in data2)) {
-      return {
-        key,
-        value: data1[key],
-        type: 'removed',
-      };
-    }
-    if (!(key in data1)) {
-      return {
-        key,
-        value: data2[key],
-        type: 'added',
-      };
-    }
-    if (data1[key] !== data2[key]) {
-      return {
-        key,
-        value: data2[key],
-        lastValue: data1[key],
-        type: 'updated',
-      };
-    }
-    return {
-      key,
-      value: data1[key],
-      type: 'unchanged',
-    };
+program
+  .arguments('<filepath1> <filepath2>')
+  .option('-f, --format <type>', 'output format')
+  .action((filepath1, filepath2, options) => {
+    const diff = genDiff(filepath1, filepath2, options.format);
+    console.log(diff);
   });
 
-  return formatFunction(diff);
-};
-
-export default genDiff;
+program.parse();
